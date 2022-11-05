@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block headcontent %}
+
+	<head>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  </head>
+  <style>
+        .motherform{
+        background: #fff;
+        width: 90vw;
+        position: relative;
+        top: -50px;
+        padding: 60px;
+        box-shadow: 0 0 20px #bac3c3;
+
+    }
+    .modal-dialog{
+        width: 50vw;
+    }
+
+    .modal-header{
+        color: white;
+        background: orange;
+        width: 25em;
+        border-radius: 10px;
+
+    }
+    .modal-header .modal-title{
+        font-size: 40px;
+        padding-bottom: 40px;
+
+    }
+
+    .coverchild{
+        background-color: #152238;
+        width: 40em;
+        margin: auto;
+        padding-top: 20px;
+        padding-right: 20px;
+        color: white;
+
+    }
+    .formcolor {
+        padding-left: 5em;
+        font-weight: 600;
+        font-size: 17px;
+        color: red;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class="motherform">
+    <div class="coverchild">
+  <div class="modal-dialog">
+        <form class="formcolor" action="" method="post" autocomplete="off">
+          {% csrf_token %}
+            <div class="modal-header">
+              <h4 class="modal-title"><b>Add/Edit Leave</b> </h4>
+            </div><hr>
+            {{ leaveforms|crispy }}
+          </div>
+          <div class="modal-footer">
+            <a href="{% url 'leave' %}" class="btn btn-info" role="button">Cancel</a>
+            <input type="submit" class="btn btn-success" value="Submit">
+          </div>
+        </form>
+  </div>
+  </div>
+{% endblock %}

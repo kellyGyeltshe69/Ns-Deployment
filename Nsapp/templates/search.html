@@ -1,0 +1,77 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<script>  
+   $(document).ready(function()
+   {
+        $('#selectedcid').select2({
+            placeholder:'Search CID...',
+            // closeOnSelect:false,
+        });
+            $('#selectedcid').on('change',function()
+            {
+                var resultdisplay=$('#selectedcid option:selected').text();
+                $('#cidresult').val(resultdisplay).map(e=> '${e}')
+            })
+
+   });
+   
+
+   $('#selectedcid').ready(function(){
+
+        $('#clearAll').click('change', function(){
+            $('#selectedcid').val(null).trigger('change');
+        })
+   });
+
+
+   $('#selectecid').on('select2:select', function(e){
+        var data = e.params.data;
+        console.log(data)
+   });
+
+   
+</script>
+
+<h2>Search Models for CId</h2>
+<p></p>
+<table border="1">
+  
+    <form method="post">
+        {% csrf_token %}
+    <tr>
+        <select id="selectedcid" name="selectedcid" class="form-select form-select-solid " data-control="select2" style="width:300px; text-align: center;" multiple>
+           <b> <option selected="true" disabled="disabled"></option><br> </b>
+            {% for x in searchmodels %}
+            <option value="{{ x.cid }}"> {{ x.cid }} </option>
+             
+            {% endfor %}
+       </select><br>
+       <small>You can add multiple CID and click Add</small><br><br>
+       <input type="button" id="clearAll" value="clearAll">
+
+       <br>
+    <div class="resultbox"> 
+        <h2>Selected CIDs</h2>
+       <textarea name="" id="cidresult" cols="70" rows="15"></textarea><br><br>
+       <input type="button" id="addcid" value="Submit" onclick="searchresult();">
+    </div>
+    </form>
+       
+    </tr>
+   
+    <style>
+        .resultbox{
+            position: fixed;
+            left: 30%;
+            top: 10px;
+            width: 550px;
+            background-color: antiquewhite;
+            padding-left: 30px;
+            padding-right: 10px;
+        }
+    </style>
+</table>

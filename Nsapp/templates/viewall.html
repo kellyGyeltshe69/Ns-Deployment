@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <style>
+   .maingrand{ width: 80vw; height: auto; margin: auto;
+   display: flex;  justify-content: space-around;
+   flex-wrap: wrap; transition: all 0.2 linear;
+}
+.smallchild{
+   height: auto;
+   padding: 20px;
+   padding-right: 50px;
+   background:#1d1e22;
+   box-shadow: 0 0 20px #bac3c3;
+   flex:1 30px 300px;
+   margin: 20px;
+   color: black;
+   font-family: 'Mulish', sans-serif;
+   font-size: 20px;
+   padding-bottom: 10px;
+   color: white;
+
+}
+
+
+.smallchild li{
+   list-style:none;
+   font-size: 17px;
+    margin-bottom: 14px;
+}
+
+
+.bigchild{
+  height: auto;
+  padding: 20px;
+  padding-right: 50px;
+  background:#1d1e22;
+  box-shadow: 0 0 20px #bac3c3;
+  flex:1 1 200px;
+  margin: 20px;
+  color: black;
+  font-family: 'Mulish', sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+
+.bigchild li{
+   list-style:none;
+   font-size: 17px;
+   margin-bottom: 14px;
+}
+
+.smallchild h3{
+    color: white;
+    padding-bottom: 30px;
+}
+
+.bigchild h3{
+    color: white;
+    padding-bottom: 30px;
+
+}
+
+        </style>
+		{% for i in profiles %}
+		<div class="maingrand" >
+				<div class="smallchild">
+						<h3>General Information</h3>
+							<p id="targetname"></p>
+							<p class="smallhead">
+							  <div class="let1">{{i.name}}</div>
+							</p>
+						  <hr>
+							<ul>
+								<li>
+									<i class="fa-solid fa-venus-double"></i>
+									Gender : {{i.g}}
+								</li><hr>
+								<li>  <i class="fa-solid fa-cake-candles"></i>
+									Date of Birth : {{i.dob}}
+								</li><hr>
+								<li>		<i class="fa-solid fa-user-secret"></i>
+									Desuup ID : {{i.did}}
+								</li><hr>
+								<li>
+									<i class="fa-solid fa-circle-info"></i>
+									CID: {{i.cid}}
+								</li><hr>
+								<li>		<i class="fa-solid fa-envelope"></i>
+									Email ID : {{i.email}}
+								</li><hr>
+								<li>		<i class="fa-solid fa-phone"></i>
+									Phone: 7734534
+								</li>
+							</ul>
+
+				</div>
+				<div class="bigchild">
+						<h3>Information Details</h3>
+						<ul>
+							<li>
+								<i class="fa-solid fa-heart"></i>
+								Marital Status : Married
+							</li><hr>
+							<li>
+								<i class="fa-solid fa-circle-half-stroke"></i>
+								Blood group : A+
+							</li><hr>
+							<li>
+								<i class="fa-solid fa-user-graduate"></i>
+								Qualification : Master
+							</li><hr>
+							<li>
+								<i class="fa-solid fa-location-dot"></i>
+								Permanent Address : Thimphu
+							</li><hr>
+							<li> <i class="fa-solid fa-briefcase"></i>
+								Employment Status : Government
+							</li><hr>
+							<li><i class="fa-solid fa-graduation-cap"></i>
+									Profession : Director
+							</li><hr>
+							<li><i class="fa-solid fa-calendar-days"></i>
+									Year of Completion : 1998
+							</li><hr>
+							<li><i class="fa-solid fa-building"></i>
+									Dzongkhag: Thimphu
+							</li><hr>
+							<li><i class="fa-solid fa-dog"></i>
+								 Gewog : Gyanakha
+							</li><hr>
+							<li><i class="fa-solid fa-mountain"></i>
+									Village : Gynakha
+							</li>
+						</ul>
+				</div>
+		</div>
+		{% endfor %}
+
+ {% endblock %}

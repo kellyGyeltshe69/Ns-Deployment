@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block headcontent %}
+<div class="topview">
+</div>
+
+<div class="tablehead1"><b>Overall Summary Of Water Project</b></div>
+
+	<head>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+	</head>
+{% endblock %}
+
+{% block content %}
+<style>
+    .columicon{
+        position: relative;
+        top: -35px;
+    }
+</style>
+<body>
+    <div class="col-sm-6">
+        <div class="columicon">
+            <!-- <i class="fa-solid fa-download" onclick="myExports()"  data-toggle="tooltip" title="Download"></i> -->
+            <!-- <i class="fa-brands fa-microsoft" onclick="myFunction()"  data-toggle="tooltip" title="Hide Column"></i> -->
+                <div class="printview">
+                       <i  id="print" class="fa-solid fa-print"  data-toggle="tooltip" title="Print"></i>
+                 </div>
+        </div>
+    </div>
+
+    <div class="grand_parent">
+    <!-- <h1> Overall Summary Of Water Project </h1> -->
+        <div class="parents">
+            <div class="child">
+                <h3 class='childhead1'>By Gender</h3>
+                 <ul>
+                    <li>{{male}}</li>
+                    <li>{{female}}</li>
+                    <li>{{ malefemale }}</li>
+                 </ul>
+
+            </div>
+            <div class="child">
+                <h3 class='childhead2'>By Qualification</h3>
+                 <ul>
+					 <li>Doctoral Degree: {{doctorallevel}}</li>
+                    <li>Masters Degree: {{masterlevel}}</li>
+                    <li>Bachelors Degree: {{degreelevel}}</li>
+                    <li>Diploma: {{diplomalevel}}</li>
+                    <li>Class XII Passed: {{classxiilevel}}</li>
+                    <li>Class X and Below: {{classxlevel}}</li>
+					<li>Former Monk: {{monklevel}}</li>
+					<li>Others: {{otherlevel}}</li>
+                 </ul>
+            </div>
+            <div class="child">
+                <h3 class='childhead3'>By Age</h3>
+                <ul>
+                    <li>Youngest:</li>
+							{{minimumage}}
+                    <li>Oldest:</li>
+							{{maximumage}}
+                    <li>{{AverageAge}}</li>
+                 </ul>
+            </div>
+        </div>
+    </div><br><br>
+
+    <div class="grand_parent2">
+            <div class="parents">
+                <div class="child2">
+                    <h3 class='childhead1'>Highest Served Desuup</h3>
+                     <ul>
+                        <li> <strong>{{highest}}</strong></li><br>
+                     </ul>
+
+                </div>
+                <div class="child2">
+                    <h3 class='childhead2'>Estimated Expenditure Of Water Project</h3>
+                     <ul>
+                        <li>{{totalexpenditure}}</li>
+                     </ul>
+                </div>
+            </div>
+    </div>
+
+
+</body>
+<script>
+const printbtn = document.getElementById('print');
+printbtn.addEventListener('click',function(){
+    print()
+});
+</script>
+
+{% endblock %}
